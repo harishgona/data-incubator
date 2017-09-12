@@ -1,0 +1,47 @@
+<style type="text/css">
+    .jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #dddddd;
+  
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+
+li{
+  list-style-type: none;
+}
+
+
+
+</style>
+
+<div class="container">
+	<div class="jumbotron">
+        <h1>Data Incubator</h1>
+        
+    <form>
+         <div class="row">
+            <div class="col-md-4">
+            <input type="text" placeholder="No of Fellows" name="fellows" class="form-control" ng-model="vm.fellows">
+                
+            <br>
+            </div>
+            <div class="col-md-4">
+            <input type="text" placeholder="No of Videos" name="videos" class="form-control" ng-model="vm.videos">
+            <br>
+            </div>
+        </div>
+           <input type="button" class="btn btn-lg btn-success" value="Submit" ng-click="vm.getMappings()">
+        
+    </form>
+    </div>
+   
+    <h3 id="jobres">Mappings</h3>
+    <div class="row marketing" id="jobres">
+    
+    </div> 
+
+</div>

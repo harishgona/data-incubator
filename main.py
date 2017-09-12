@@ -9,12 +9,8 @@ api = Api(app)
 
 
 @app.route("/")
-def main():
-    return "hello"
-
-@app.route("/forecast/")
 def forecast():
-    return send_file('./static/index.html')
+    return send_file('templates/index.html')
 
 @app.after_request
 def after_request(response):
