@@ -1,8 +1,13 @@
-<style type="text/css">
-    .jumbotron {
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="static/main.js"></script>
+<style>
+.jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
-  background-color: #dddddd;
+  background-color: lightblue;
   
 }
 .jumbotron .btn {
@@ -13,35 +18,56 @@
 li{
   list-style-type: none;
 }
-
-
+.mappings {
+  text-align: center;
+  background-color: lightblue;
+}
 
 </style>
+</head>
+<body>
 
-<div class="container">
-	<div class="jumbotron">
+  <div class="container" ng-app="myApp" ng-controller="formCtrl">
+  <div class="jumbotron">
         <h1>Data Incubator</h1>
         
     <form>
          <div class="row">
             <div class="col-md-4">
-            <input type="text" placeholder="No of Fellows" name="fellows" class="form-control" ng-model="vm.fellows">
+            <input type="text" placeholder="No of reviewers" name="fellows" class="form-control" ng-model="fellows">
                 
             <br>
             </div>
             <div class="col-md-4">
-            <input type="text" placeholder="No of Videos" name="videos" class="form-control" ng-model="vm.videos">
+            <input type="text" placeholder="No of persons" name="videos" class="form-control" ng-model="videos">
             <br>
             </div>
         </div>
-           <input type="button" class="btn btn-lg btn-success" value="Submit" ng-click="vm.getMappings()">
+           <input type="button" class="btn btn-lg btn-success" value="Submit" ng-click="getMappings()">
         
     </form>
-    </div>
+  </div>
    
     <h3 id="jobres">Mappings</h3>
-    <div class="row marketing" id="jobres">
-    
+    <div class="mappings">
+    <ul>
+        <li ng-hide="results.length">
+            
+        </li>
+        <li ng-repeat="result in results" >
+            <div class="col-md-10">
+              
+              <span>Reviewer {{result[0]}} should review Person {{result[1]}}</span>     
+              
+            </div>
+          
+         
+        </li>
+    </ul>
     </div> 
 
 </div>
+
+
+</body>
+</html>

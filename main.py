@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request, abort, send_file
 from flask_restful import Api, Resource
 from itertools import *
-
+import random
 app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
 api = Api(app)
@@ -24,22 +24,36 @@ def options (self):
       'Access-Control-Allow-Methods' : 'PUT,GET' }
 
 class videosAPI(Resource):
-    def get(self, N, M):
-        videos = [i+1 for i in range(N)]
-        fellows = [i+1 for i in range(M)]
-        if (M<N):
-            print(fellows)
-            print(videos)
-            map1 = [(x,y) for x in fellows for y in videos if x!=y]
-            print(map1)
-            print("true")
-        else:
-            print("not valid")
-        return jsonify(map1)
+  def get(self, x, y):
+    N = int(y)
+    people = [i+1 for i in range(N)]
+    mapping = []
+    popList = {}
+    for p in people:
+      popList[p] = int(x)
+
+    for p in people:
+      M = int(x)
+      #peopleList = [i+1 for i in range(N)]
+      pushList = []
+      while (M>0):
+        r = random.randint(1,N)
+        #random.seed(r)
+        if p!=r and popList[r]>0:
+          mapping.append((p,r))
+          popList[r] = popList[r]-1
+          M = M-1
+          print M
+        print r
+    print(popList)
+    print(mapping) 
+    return jsonify(mapping)  
+        
+        
     
 
 
-api.add_resource(videosAPI, '/dataincubator/<int:M>/<int:N>')
+api.add_resource(videosAPI, '/<string:x>/<string:y>')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True, port=80)
+  app.run(host='0.0.0.0', debug=True, port=80)
