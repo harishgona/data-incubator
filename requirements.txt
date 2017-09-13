@@ -1,0 +1,8 @@
+Flask==0.12.2
+Flask-Cors==3.0.2
+Flask-RESTful==0.3.6
+html5lib==0.999
+py==1.4.33
+pytest==3.0.7
+python-dateutil==2.6.0
+virtualenv==15.1.0
